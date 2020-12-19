@@ -120,12 +120,11 @@ const generateTextThatFits = () => {
                 new_word.innerHTML = shortWord;
                 addWord(new_word);
                 // console.log(`I just added ${shortWord}and now the width is ${widthOfLine}`)
-            } else { //if it does not, delete it
+            } else { //if it does not, go to the next line
                 widthOfLine = 0;
             }
         }
-
-        hiddenWordsContainer.removeChild(next_word, short_word);
+        hiddenWordsContainer.innerHTML = "";
     } while(textContainer.clientHeight <= clientHeight)
 
     if(textContainer.clientHeight > clientHeight) { // the do while adds a word onto a new line, which should be removed

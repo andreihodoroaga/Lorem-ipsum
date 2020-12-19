@@ -129,9 +129,9 @@ const generateTextThatFits = () => {
             }
         }
         hiddenWordsContainer.innerHTML = "";
-    } while(textContainer.clientHeight <= containerHeight)
+    } while(textContainer.offsetHeight <= containerHeight)
 
-    if(textContainer.clientHeight > containerHeight) { // the do while adds a word onto a new line, which should be removed
+    if(textContainer.offsetHeight > containerHeight) { // the do while adds a word onto a new line, which should be removed
         removeWord(ind);
         widthOfLine = 0;
     }

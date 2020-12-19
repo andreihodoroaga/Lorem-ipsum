@@ -34,9 +34,11 @@ const shuffle = (array) => {
         currentIndex -= 1;
 
         // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        if(currentIndex !== 0 && array[randomIndex] !== array[currentIndex - 1]) {
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
     }
 
     return array;
@@ -72,7 +74,7 @@ const generateWordsList = () => {
 let clientHeight = 77, nrWords = 0, widthOfLine = 0;
 
 const chooseShorterWord = (wordsArray) => {
-    wordsArray.push("she ", "he ", "my ", "his ", "her ", "all ", "and ", "do ", "day ", "how ", "him ")
+    wordsArray.push("she ", "he ", "my ", "his ", "her ", "all ", "and ", "do ", "day ", "how ", "him ");
     let shortWords = generateShortWords(wordsArray);
     return shortWords[Math.floor(Math.random() * (shortWords.length - 1))];
 }
@@ -110,6 +112,7 @@ const generateTextThatFits = () => {
             wordsList.push(allWords[ind]);
             new_word.innerHTML = allWords[ind];
             addWord(new_word);
+            // console.log(`I just added ${allWords[ind]} and now the width is ${widthOfLine}`);
             ind++;
         } else { // add a shorter one otherwise
             const shortWord = chooseShorterWord(generateShortWords(allWords));
@@ -119,8 +122,8 @@ const generateTextThatFits = () => {
                 wordsList.push(shortWord);
                 new_word.innerHTML = shortWord;
                 addWord(new_word);
-                // console.log(`I just added ${shortWord}and now the width is ${widthOfLine}`)
-            } else { //if it does not, delete it
+                console.log(`I just added    ${shortWord}and now the width is ${widthOfLine}`)
+            } else { // if it does not, go to the next line
                 widthOfLine = 0;
             }
         }
@@ -128,6 +131,7 @@ const generateTextThatFits = () => {
     } while(textContainer.clientHeight <= clientHeight)
 
     if(textContainer.clientHeight > clientHeight) { // the do while adds a word onto a new line, which should be removed
+        widthOfLine = 0;
         removeWord(ind);
     }
     displayedWords[0].classList.add('current-word');
@@ -233,6 +237,7 @@ const control = (e) => {
             if (currentWordIndex % (nrWords - 1)) // check for last word (it should not be added the class)
                 displayedWords[currentWordIndex].classList.add('current-word');
             e.target.value = "";
+            widthOfLine = 0; // reset the width of the line of words
         }
     }
     scoreDisplay.innerHTML = score;

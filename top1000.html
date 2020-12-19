@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Typing speed test</title>
+</head>
+
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="./index.html"><img src="./svgs/keyboard.svg" alt="some hands on a keyboard" class="header-svg"></a>
+                <a href="./index.html"><p class="logo-text">Lorem ipsum</p></a>
+            </div>
+            <div class="links">
+                <div class="top-100-container">
+                    <a href="./top100.html" class="top-100">Top 100</a>
+                    <span class="top-100-hidden">top 100 english words</span>
+                </div>
+                <div class="top-1000-container">
+                    <a href="./top1000.html" class="top-1000 current-page">Top 1000</a>
+                </div>
+                <div class="progress-container">
+                    <a href="./progress.html" class="progress">Progress</a>
+                    <span class="progress-hidden">see your progress</span>
+                </div>
+                <div class="about-container">
+                    <a href="./about.html" class="about">About</a>
+                    <span class="about-hidden">about lorem ipsum</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="body-container container">
+            <div class="stats-container"></div>
+            <div class="score-display">
+                <div>Words: <span class="score">0</span></div>
+            </div>
+            <div class="text-container"><p class="text"></p></div>
+            <div class="stats">
+                <input type="text" class="text-input" placeholder="Start typing" autofocus>
+                <span class="timer">1:00</span>
+                <img src="./svgs/refresh.svg" alt="refresh" class="resetBtn">    
+            </div>
+        </div>
+    </main>
+
+    <div class="hidden-words-container"></div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="./js/top1000.js"></script>
+</body>
+
+</html>
